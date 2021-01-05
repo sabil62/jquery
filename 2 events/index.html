@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <title>Events</title>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="col-8 m-auto">
+        <h1 class="m-2">Events</h1>
+
+        <button class="btn btn-warning px-4 m-2" id="event-button">
+          Events in console
+        </button>
+        <br />
+        <button class="btn btn-success btn-lg px-3" id="button-1">
+          Toggle <span class="dropdown-toggle"></span>
+        </button>
+        <p class="first">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+          laudantium, eos, sed facilis explicabo ex quis voluptatem nemo nihil
+          sit distinctio blanditiis reprehenderit hic beatae corrupti quia rem
+          soluta qui iure ducimus, molestiae iusto? Architecto ex distinctio
+          porro qui beatae
+        </p>
+        <button class="btn btn-warning px-2" id="button-2">
+          DblClick <span class="dropdown-toggle"></span>
+        </button>
+        <p class="second">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium
+          sit velit obcaecati temporibus alias eveniet sed. Repudiandae, nihil
+          quisquam. Obcaecati, modi dolor! Unde necessitatibus, facilis, libero
+          odit officiis excepturi, rem est cupiditate temporibus quibusdam
+          eveniet doloremque deserunt sit. Nostrum, placeat!
+        </p>
+        <button class="btn btn-info px-2" id="button-3">
+          Hover(mouse enter and leave)
+        </button>
+        <p class="third mb-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+          voluptates nisi vel voluptatem placeat officia! Maxime, provident
+          similique praesentium ducimus expedita ipsum cum nam veniam ut,
+          veritatis incidunt, adipisci ullam?
+        </p>
+        <h4 class="text-center">clientX and clientY</h4>
+        <div
+          id="coordinates"
+          style="font-weight: bold; font-size: 1.4rem"
+        ></div>
+        <h3 class="text-center">Offset X and Y (for inside container)</h3>
+
+        <div
+          id="container-cordinates"
+          style="
+            height: 300px;
+            background-color: rgba(201, 255, 255, 0.705);
+            border: 2px dashed black;
+            width: 600px;
+            font-size: 2rem;
+          "
+        ></div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        //event button
+        $("#event-button").click(function (e) {
+          console.log(e);
+        });
+        //toggle event
+        $("#button-1").click(function () {
+          $("p.first").toggle();
+        });
+        //Double Click EVENT
+        $("#button-2").dblclick(function () {
+          $(".second").css("background-color", "grey");
+        });
+        //hover(mouse enter and leave)
+        $("#button-3").hover(function () {
+          $(".third").toggle();
+        });
+
+        //for COORDINATES or clientX and clientY
+        $(document).mousemove(function (e) {
+          $("#coordinates").html(
+            "Coordinate X :" + e.clientX + " Coordinate Y " + e.clientY
+          );
+        });
+        //coordinates of box
+        $("#container-cordinates").mousemove(function (e) {
+          $("#container-cordinates").html(e.offsetX + " and " + e.offsetY);
+        });
+      });
+    </script>
+  </body>
+</html>
